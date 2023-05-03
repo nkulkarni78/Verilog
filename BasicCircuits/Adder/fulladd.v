@@ -4,6 +4,6 @@ module fulladder(sum,carry,in1,in2,cin);
   always@(in1 or in2 or cin)
   begin
     sum = in1^in2^cin;
-    carry = (a&b)|(b&c)|(c&a);
+    carry = (in1&in2)|(in2&cin)|(cin&in1);
   end
 endmodule
