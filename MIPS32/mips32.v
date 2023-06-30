@@ -139,7 +139,7 @@ module pipe_mips32(clk1,clk2);
   if(HALTED==0)
   begin
     Mem_WB_Type <= #2 EX_Mem_Type;
-    Mem_WB_IR <= #2 EX_Mem_IR:
+    Mem_WB_IR <= #2 EX_Mem_IR;
 
     //Memory access based on type of instruction
     case(EX_Mem_Type)
@@ -154,7 +154,7 @@ module pipe_mips32(clk1,clk2);
   always@(posedge clk1)
   begin
     if(TAKEN_BRANCH==0)
-    case
+    case(Mem_WB_Type)
       RR_ALU: Reg[Mem_WB_IR[15:11]] <= #2 Mem_WB_ALUOut;
       RM_ALU: Reg[Mem_WB_IR[20:16]] <= #2 Mem_WB_ALUOut;
       LOAD: Reg[Mem_WB_IR[20:16]] <= #2 Mem_WB_LMD;
