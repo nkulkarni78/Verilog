@@ -11,7 +11,7 @@ module pipe_mips32(clk1,clk2);
   //Registers for each stage  in pipeline process
   reg [31:0]PC,IF_ID_IR,IF_ID_NPC;
   reg [31:0]ID_EX_IR,ID_EX_NPC,ID_EX_A,ID_EX_B,ID_EX_Mem;
-  reg [31:0]ID_EX_Type,EX_Mem_Type,Mem_WB_Type;
+  reg [2:0]ID_EX_Type,EX_Mem_Type,Mem_WB_Type;
   reg [31:0]EX_Mem_IR,EX_Mem_ALUOut,EX_Mem_B;
   reg       EX_Mem_cond;
   reg [31:0]Mem_WB_IR,Mem_WB_ALUOut,Mem_WB_LMD;
