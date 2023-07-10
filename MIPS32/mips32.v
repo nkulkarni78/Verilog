@@ -94,7 +94,7 @@ module pipe_mips32(clk1,clk2);
   if(HALTED==0)
   begin
     EX_Mem_Type <= #2 ID_EX_Type;
-    EX_Mem_IR <= #2 ID_EX_Type;
+    EX_Mem_IR <= #2 ID_EX_IR;
     TAKEN_BRANCH <= #2 0;
 
     case(ID_EX_Type)
