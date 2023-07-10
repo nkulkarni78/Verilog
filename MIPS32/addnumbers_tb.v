@@ -21,7 +21,7 @@ module addertest_mips32;
   initial
   begin
     clk1=0;clk2=0;
-    repeat(20)
+    repeat(50)
     begin
       #5 clk1=1;#5 clk1=0;
       #5 clk2=1;#5 clk2=0;
@@ -56,10 +56,9 @@ module addertest_mips32;
     //HLT
     add.Mem[8]=32'hfc000000;
 
-    $display("PC=%d",add.PC);
     #700
     for(k=0;k<6;k=k+1)
-      $display("R%1d - %2d",k,add.Reg[k]);    
+      $display("R%1d - %2d",k,add.Reg[k]);
   end
 
   //vcd file generation
