@@ -27,7 +27,7 @@ module pipe_mips32(clk1,clk2);
             ADDI=6'b001010,SUBI=6'b001011,SLTI=6'b001100,
             BNEQZ=6'b001101,BEQZ=6'b001110;
   //Special instructions as parameters
-  parameter RR_ALU=3'b000,RM_ALU=3'b001,LOAD=3'b001,
+  parameter RR_ALU=3'b000,RM_ALU=3'b001,LOAD=3'b010,
             STORE=3'b011,BRANCH=3'b100,HALT=3'b101;
 
   //1-Bit flag for halting instructions
@@ -68,7 +68,7 @@ module pipe_mips32(clk1,clk2);
 
     //rt value from instruction
     if(IF_ID_IR[20:16]==5'b00000)
-      ID_EX_B <=0;
+      ID_EX_B <= 0;
     else
       ID_EX_B <= #2 Reg[IF_ID_IR[20:16]];
 
@@ -144,7 +144,7 @@ module pipe_mips32(clk1,clk2);
     //Memory access based on type of instruction
     case(EX_Mem_Type)
       RR_ALU,RM_ALU: Mem_WB_ALUOut <= #2 EX_Mem_ALUOut;
-      LOAD: Mem_WB_ALUOut <= #2 Mem[EX_Mem_ALUOut];
+      LOAD: Mem_WB_LMD <= #2 Mem[EX_Mem_ALUOut];
       STORE: if(TAKEN_BRANCH==0)
                Mem[EX_Mem_ALUOut] <= #2 EX_Mem_B;
     endcase
