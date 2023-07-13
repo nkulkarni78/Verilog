@@ -66,5 +66,6 @@ module loadtest_tb;
   begin
     $dumpfile("LoadandAdd.vcd");
     $dumpvars(0,loadtest_tb);
+    #600 $finish;
   end
 endmodule
