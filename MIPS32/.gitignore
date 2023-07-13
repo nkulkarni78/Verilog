@@ -1,5 +1,6 @@
 DVEfiles/
 opendatabase.log
-simv
+simv*
 csrc/
-LoadandAdd.vcd.vpd
+*.vpd
+ucli.key
